@@ -1,0 +1,11 @@
+<launch>
+    <!-- 载入机器人和仿真场景 -->
+    <include file="$(find wpr_simulation)/launch/wpb_stage_robocup.launch"/>
+    <!-- 启动gmapping节点 -->
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping"/>
+    <!-- 启动rviz节点 -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find lidar_pkg)/rviz/gmapping.rviz"/>
+    <!-- 启动键盘控制节点 -->
+    <node pkg="wpr_simulation" type="keyboard_vel_ctrl" name="keyboard_vel_ctrl"/>
+
+</launch>
