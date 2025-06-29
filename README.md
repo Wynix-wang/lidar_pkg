@@ -55,7 +55,7 @@
    roslaunch lidar_pkg nav.launch
    ```
 
-   部分参数在 /lidar_pkg/nav_lidar 文件夹下
+   此时可以在rviz中手动放置2D Nav Goal来设置导航目标。
 
    - 全局规划器使用GlobalPlanner。默认Dijkstra算法，可以通过添加以下参数来切换为A*（不推荐）。
 
@@ -67,5 +67,21 @@
    - 局部规划器使用WpbhLocalPlanner
    - 恢复策略为：保守重置(2.0m)->旋转恢复->激进重置(0m)->旋转恢复
 
+   > 部分参数在 /lidar_pkg/nav_lidar 文件夹下
+   >
    > 更多参数设置在ROS Index中搜索查看，大部分是通过降低路径质量来进行优化。
+
+     - 实时调整参数
+
+   ```
+   rosrun rqt_reconfigure rqt_reconfigure
+   ```
+
+4. 通过程序设置导航目标点
+
+   ```
+   rosrun lidar_pkg nav_client.py <param>
+   ```
+
+   参数输入预设的导航目标点，可选值：a、b、c、d、0
 
