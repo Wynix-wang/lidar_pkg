@@ -47,10 +47,9 @@ if __name__ == "__main__":
         goal.target_pose.pose.position.y = 0.0
         goal.target_pose.pose.position.z = 0.0
     # 持续更新全局导航路径
-    ac.send_goal(goal)
-    print("Start navigation, goal: " + position)
+    print("Start navigation, goal: " + position + " ...")
     while ac.get_state() != actionlib.GoalStatus.SUCCEEDED:
         ac.send_goal(goal)
-        rospy.sleep(1)
+        rospy.sleep(8)
         ac.get_result()
     print("Mission complete!")
